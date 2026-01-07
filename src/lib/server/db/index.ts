@@ -10,7 +10,10 @@ if (dev) {
 	validateTURSO();
 }
 
-const client = createClient({ url: env.DATABASE_URL });
+const client = createClient({
+	url: dev ? env.DATABASE_URL : env.TURSO_CONNECTION_URL,
+	authToken: dev ? undefined : env.TURSO_AUTH_TOKEN
+});
 
 export const db = drizzle(client, { schema });
 
