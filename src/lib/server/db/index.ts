@@ -4,7 +4,11 @@ import * as schema from './schema';
 import { env } from '$env/dynamic/private';
 import { dev } from '$app/environment';
 
-dev ? validateSQLITE() : validateTURSO();
+if (dev) {
+	validateSQLITE();
+} else {
+	validateTURSO();
+}
 
 const client = createClient({ url: env.DATABASE_URL });
 

@@ -13,7 +13,7 @@
 	<input {...addItem.fields.name.as('text')} />
 	<button>Add</button>
 
-	{#each addItem.fields.name.issues() as issue}
+	{#each addItem.fields.name.issues() as issue, i (i)}
 		<p>{issue.message}</p>
 	{/each}
 </form>
